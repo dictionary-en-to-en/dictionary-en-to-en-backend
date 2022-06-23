@@ -10,12 +10,13 @@ import (
 	"github.com/gofiber/fiber/v2"
 	"github.com/gofiber/fiber/v2/middleware/cors"
 	"github.com/gofiber/fiber/v2/middleware/logger"
+	"github.com/gofiber/fiber/v2/middleware/recover"
 )
 
 func main() {
 	router := fiber.New()
 	// use recover function for when server panic, recover server.
-	//router.Use(recover())
+	router.Use(recover.New())
 	router.Use(logger.New(logger.Config{TimeFormat: "2006-01-02 15:04:05"}))
 
 	// Use middleware functions.
