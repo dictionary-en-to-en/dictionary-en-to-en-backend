@@ -1,14 +1,10 @@
 package dictionary
 
-type WordOutput struct {
-	Word []Docs
-}
+type DocOutput []Docs
 
 type Docs struct {
 	Word      string      `json:"word"`
-	Phonetic  string      `json:"phonetic"`
 	Phonetics []Phonetics `json:"phonetics"`
-	Origin    string      `json:"origin"`
 	Meanings  []Meanings  `json:"meanings"`
 }
 

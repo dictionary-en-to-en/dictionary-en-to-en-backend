@@ -3,8 +3,8 @@ package main
 import (
 	"DictionaryENtoENBackend/config"
 	"DictionaryENtoENBackend/controllers"
-	"DictionaryENtoENBackend/controllers/pageNotFound"
 	middleware "DictionaryENtoENBackend/middleware/middlewarecors"
+	"DictionaryENtoENBackend/middleware/pageNotFound"
 	"DictionaryENtoENBackend/middleware/slash"
 	"flag"
 	"github.com/gofiber/fiber/v2"
@@ -24,6 +24,7 @@ func main() {
 	router.Use(slash.Remover)
 
 	api := router.Group("/api" + config.ApiVersion)
+	// register all routers.
 	controllers.RegisterAll(api)
 
 	// when request sent by user and there's no handler, it will show 404 error.
