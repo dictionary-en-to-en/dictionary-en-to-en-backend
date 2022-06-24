@@ -1,7 +1,10 @@
 package controllers
 
-import "github.com/gofiber/fiber/v2"
+import (
+	"DictionaryENtoENBackend/controllers/searchWord"
+	"github.com/gofiber/fiber/v2"
+)
 
 func RegisterAll(api fiber.Router) {
-
+	searchWord.RouteDecision(api)
 }
