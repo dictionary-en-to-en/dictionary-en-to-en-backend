@@ -52,6 +52,6 @@ func GetPort() (port string) {
 		}
 
 	}
-	port = getEnvValue("PORT")
+	port = "12345" //getEnvValue("PORT")
 	return
 }
