@@ -16,7 +16,7 @@ RUN go build -o ./bin/app .
 
 
 # This container exposes port 8080 to the outside world
-EXPOSE 8095
+EXPOSE 12345
 
 # Run the binary program produced by `go install`
 CMD ["./bin/app"]

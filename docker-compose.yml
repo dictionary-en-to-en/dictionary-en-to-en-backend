@@ -9,7 +9,7 @@ services:
     environment:
       - 'HOST=0.0.0.0'
     ports:
-      - "8095:8095"
+      - "12345:12345"
     restart: always
     networks:
       - harchi
