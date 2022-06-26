@@ -14,6 +14,7 @@ import (
 )
 
 func main() {
+	config.CheckEnvValues()
 	router := fiber.New()
 	// use recover function for when server panic, recover server.
 	router.Use(recover.New())
