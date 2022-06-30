@@ -26,7 +26,7 @@ func search(c *fiber.Ctx) error {
 	// send to api.
 	output, err := tools.SendToDictionaryApi(*inputForm)
 	if err != nil {
-		return tools.NewError("Sorry pal, we couldn't find definitions for the word you were looking for", 200, nil)
+		panic(errors.New(""))
 	}
 
 	tools.Sender(c, true, 200, nil, output)
