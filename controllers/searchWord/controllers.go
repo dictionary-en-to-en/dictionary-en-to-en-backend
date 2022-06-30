@@ -26,7 +26,7 @@ func search(c *fiber.Ctx) error {
 	// send to api.
 	output, err := tools.SendToDictionaryApi(*inputForm)
 	if err != nil {
-		panic(errors.New(""))
+		inputForm = nil
 	}
 
 	tools.Sender(c, true, 200, nil, output)
