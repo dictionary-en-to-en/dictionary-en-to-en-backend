@@ -30,7 +30,7 @@ func SendToDictionaryApi(inputForm inputforms.Search) (*dictionary.DocOutPut, er
 	output := new(dictionary.DocOutPut)
 	err = jsoniter.Unmarshal(body, output)
 	if err != nil {
-		panic(err)
+		return nil, err
 	}
 
 	return output, nil

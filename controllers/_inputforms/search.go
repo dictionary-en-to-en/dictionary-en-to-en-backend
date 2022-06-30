@@ -6,7 +6,7 @@ import (
 )
 
 type Search struct {
-	Word string `json:"word"`
+	Word string `json:"word" query:"word"`
 }
 
 func (s *Search) Validation() error {

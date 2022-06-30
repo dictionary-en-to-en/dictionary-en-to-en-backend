@@ -27,6 +27,11 @@ type Error struct {
 	Data    interface{} `json:"data"`
 }
 
+func (e Error) Error() string {
+	//TODO implement me
+	panic(e.Message)
+}
+
 func NewError(message string, code int, data interface{}) *Error {
 	return &Error{
 		Message: message,

@@ -13,7 +13,9 @@ func search(c *fiber.Ctx) error {
 	// Parse inputForm.
 	inputForm := new(inputforms.Search)
 	if err := c.BodyParser(inputForm); err != nil {
-		panic(errors.New(messages.InvalidInputForm))
+		if err := c.QueryParser(inputForm); err != nil {
+			panic(errors.New(messages.InvalidInputForm))
+		}
 	}
 
 	// Validate inputForm.
@@ -24,9 +26,7 @@ func search(c *fiber.Ctx) error {
 	// send to api.
 	output, err := tools.SendToDictionaryApi(*inputForm)
 	if err != nil {
-		tools.Sender(c, false, 200, nil, fiber.Map{
-			"message": "Sorry pal, we couldn't find definitions for the word you were looking for",
-		})
+		return tools.NewError("Sorry pal, we couldn't find definitions for the word you were looking for", 200, nil)
 	}
 
 	tools.Sender(c, true, 200, nil, output)
