@@ -1,7 +1,6 @@
 package config
 
 import (
-	"errors"
 	"github.com/joho/godotenv"
 	"log"
 	"os"
@@ -32,18 +31,27 @@ func getEnvValue(key string) string {
 }
 
 func GetHost() (host string) {
-	host = getEnvValue("HOST")
-	if host == "" {
-		panic(errors.New("can't get Host env from .env file"))
+	for _, e := range os.Environ() {
+		pair := strings.SplitN(e, "=", 2)
+		if pair[0] == "HOST" {
+			host = pair[1]
+			return
+		}
 	}
 
+	host = getEnvValue("HOST")
 	return
 }
 
 func GetPort() (port string) {
-	port = getEnvValue("PORT")
-	if port == "" {
-		panic(errors.New("can't get Port env from .env file"))
+	for _, e := range os.Environ() {
+		pair := strings.SplitN(e, "=", 2)
+		if pair[0] == "PORT" {
+			port = pair[1]
+			return
+		}
+
 	}
+	port = "12345" //getEnvValue("PORT")
 	return
 }

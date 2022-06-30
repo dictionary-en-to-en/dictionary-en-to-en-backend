@@ -1,0 +1,20 @@
+version: '3.3'
+
+services:
+
+  dictionary_en_to_en: 
+    build : .
+    image: dictionary_en_to_en:latest
+    container_name: dictionary_en_to_en
+    environment:
+      - 'HOST=0.0.0.0'
+    ports:
+      - "12345:12345"
+    restart: always
+    networks:
+      - harchi
+
+networks:
+  harchi:
+    external: true
+
