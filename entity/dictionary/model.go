@@ -1,11 +1,6 @@
 package dictionary
 
-type DocOutput struct {
-	Doc        []*Docs
-	Title      string `json:"title"`
-	Message    string `json:"message"`
-	Resolution string `json:"resolution"`
-}
+type DocOutPut []*Docs
 
 type Docs struct {
 	Word      string      `json:"word"`

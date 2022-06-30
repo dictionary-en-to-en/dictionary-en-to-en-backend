@@ -24,7 +24,9 @@ func search(c *fiber.Ctx) error {
 	// send to api.
 	output, err := tools.SendToDictionaryApi(*inputForm)
 	if err != nil {
-		panic(messages.InternalServerError)
+		tools.Sender(c, false, 200, nil, fiber.Map{
+			"message": "Sorry pal, we couldn't find definitions for the word you were looking for",
+		})
 	}
 
 	tools.Sender(c, true, 200, nil, output)

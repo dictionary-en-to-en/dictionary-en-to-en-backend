@@ -9,7 +9,7 @@ import (
 	"net/http"
 )
 
-func SendToDictionaryApi(inputForm inputforms.Search) (*dictionary.DocOutput, error) {
+func SendToDictionaryApi(inputForm inputforms.Search) (*dictionary.DocOutPut, error) {
 	response, err := http.Get("https://api.dictionaryapi.dev/api/v2/entries/en/" + inputForm.Word)
 	if err != nil {
 		panic(err)
@@ -27,7 +27,7 @@ func SendToDictionaryApi(inputForm inputforms.Search) (*dictionary.DocOutput, er
 		panic(err)
 	}
 
-	output := new(dictionary.DocOutput)
+	output := new(dictionary.DocOutPut)
 	err = jsoniter.Unmarshal(body, output)
 	if err != nil {
 		panic(err)
